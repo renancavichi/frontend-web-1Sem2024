@@ -1,7 +1,9 @@
 html, body{
 	margin: 0;
 	padding: 0;
+	background: #141414;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	color: #FFF;
 }
 
 body > header{
@@ -23,16 +25,8 @@ body > header{
 	height: 60px;
 }
 
-.logotipo h1{
-	color: #FFF;
-}
-
 .logotipo h1 span{
 	color: #ff5900;
-}
-
-body > header nav{
-	color: #ffffff;
 }
 
 nav ul{
@@ -41,4 +35,17 @@ nav ul{
   gap: 16px;
 	margin: 0;
 	padding: 0;
+}
+
+main{
+	min-height: calc(100vh - 302px);
+	padding: 16px;
+}
+
+footer{
+	background: #000;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
