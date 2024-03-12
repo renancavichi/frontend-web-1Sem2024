@@ -37,15 +37,84 @@ nav ul{
 	padding: 0;
 }
 
-main{
+body > main{
 	min-height: calc(100vh - 302px);
 	padding: 16px;
+	display: inline-block;
+	gap: 16px;
 }
 
-footer{
+body > footer{
 	background: #000;
 	height: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.card-ticker{
+	width: 230px;
+	background: #0a0a0a;
+	border-radius: 20px;
+	padding: 16px;
+}
+
+.card-ticker header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card-ticker header h2{
+	margin: 0;
+	font-size: 12px;
+}
+
+.card-ticker header h2 span{
+	font-weight: normal;
+	color: #7b7b7b;
+}
+
+.card-ticker header h1{
+	margin: 0;
+	font-size: 14px;
+	font-weight: 500;
+} 
+
+.card-ticker main p{
+	font-size: 32px;
+	margin: 16px 0 2px 0;
+} 
+
+.card-ticker main span{
+	color: #7b7b7b;
+}
+
+.card-ticker main span:nth-child(2){
+	background: #02bb2a;
+	padding: 3px 16px;
+	margin: 0 8px 0 0;
+	border-radius: 12px;
+	font-size: 14px;
+	color: #FFF;
+}
+
+.card-ticker footer{
+	display: flex;
+	justify-content: space-between;
+	margin: 26px 0 0 0;
+}
+
+.card-ticker footer div:nth-child(2){
+	text-align: right;
+}
+
+.card-ticker footer div p{
+	margin: 0;
+	font-size: 18px;
+}
+
+.card-ticker footer div span{
+	font-size: 14px;
+	color: #7b7b7b;
 }
