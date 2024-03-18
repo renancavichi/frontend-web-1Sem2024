@@ -15,6 +15,23 @@ body > header{
 	justify-content: space-between;
 }
 
+body > header nav a{
+	color: #FFF;
+	text-decoration: none;
+	padding: 0 0 21px 0;
+}
+
+body > header nav a:hover{
+	color: #ff5900;
+	
+	border-bottom: 3px solid #ff5900; 
+}
+
+body > header nav a.active{
+	color: #ac3c00;
+	border-bottom: 3px double #ac3c00;
+}
+
 .logotipo{
 	display: flex;
 	align-items: center;
@@ -31,8 +48,8 @@ body > header{
 
 nav ul{
 	display: flex;
-  list-style-type: none;
-  gap: 16px;
+	list-style-type: none;
+	gap: 16px;
 	margin: 0;
 	padding: 0;
 }
@@ -55,10 +72,10 @@ body > footer{
 
 .card-ticker{
 	width: 230px;
+	height: fit-content;
 	background: #0a0a0a;
 	border-radius: 20px;
 	padding: 16px;
-	align-self: baseline;
 }
 
 .card-ticker header{
