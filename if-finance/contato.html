@@ -6,6 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>IFFinance</title>
 	<link rel="stylesheet" href="./css/style.css">
+	<style>
+		body > main{
+			flex-direction: column;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,111 +29,44 @@
 		</nav>
 	</header>
 	<main>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
+		<h1>Cadastre-se</h1>
+		<form action="exemplo-server.php" method="POST">
+			<fieldset>
+				<legend>Dados Pessoais</legend>
+				<label for="nome">Nome:</label>
+				<input type="text" name="nome" id="nome">
+				<label for="sobrenome">Sobrenome:</label>
+				<input type="text" name="sobrenome" id="sobrenome">
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email">
+				<label for="pass">Senha:</label>
+				<input type="password" name="pass" id="pass">
+			</fieldset>
+
+			<fieldset>
+				<legend>Endereço</legend>
+				<label for="rua">Rua:</label>
+				<input type="text" name="rua" id="rua">
+				<label for="cidade">Cidade:</label>
+				<select name="cidade" id="cidade">
+					<option value="Caraguatatuba">Caragua</option>
+					<option value="Ubatuba">Ubatuba</option>
+					<option value="São Sebastião">São Seba</option>
+				</select>
+				<h5>Com que frequência visita o litoral?</h5>
+				<div><input type="radio" name="frequencia" id="muito-pouco" value="Muito Pouco"> <label for="muito-pouco">Muito Pouco</label></div>
+				<div><input type="radio" name="frequencia" id="pouco" value="Pouco"> <label for="pouco">Pouco</label></div>
+				<div><input type="radio" name="frequencia" id="eventualmente" value="Eventualmente" checked> <label for="eventualmente">Eventualmente</label></div>
+				<div><input type="radio" name="frequencia" id="muito" value="Muito"> <label for="muito">Muito</label></div>
+			</fieldset>
+			<input type="checkbox" name="termos" id="termos" value="Sim"> <label for="termos">Aceita os termos de uso do site?</label><br>
+			<input type="checkbox" name="newsletter" id="newsletter" value="Sim"> <label for="newsletter">Gostaria de receber propaganda? Vamos mandar de qualquer forma!</label>
+			<br><br>
+			<label for="comentario">Deixe um comentário:</label><br>
+			<textarea name="comentario" id="comentario" rows="8" cols="50"></textarea><br>
+			<input type="submit" value="Enviar">
+			<input type="reset" value="Resetar"> <span>(Não usar)</span>
+		</form>	
 	</main>
 	<footer>
 		<p>Copyright 2024 © Renan Cavichi</p>

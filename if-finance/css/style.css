@@ -4,6 +4,7 @@ html, body{
 	background: #141414;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 	color: #FFF;
+	font-size: 1.1rem;
 }
 
 body > header{
@@ -29,7 +30,7 @@ body > header nav a:hover{
 
 body > header nav a.active{
 	color: #ac3c00;
-	border-bottom: 3px double #ac3c00;
+	border-bottom: 3px solid #ac3c00;
 }
 
 .logotipo{
@@ -72,10 +73,11 @@ body > footer{
 
 .card-ticker{
 	width: 230px;
-	height: fit-content;
+	/* height: fit-content; */
 	background: #0a0a0a;
 	border-radius: 20px;
 	padding: 16px;
+	align-self: baseline;
 }
 
 .card-ticker header{
@@ -137,3 +139,66 @@ body > footer{
 	font-size: 14px;
 	color: #7b7b7b;
 }
+
+table {
+	border-collapse: collapse;
+}
+
+th, td{
+	border: 1px solid #7b7b7b;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even){
+	background: #333333;
+}
+tr:nth-child(odd){
+	background: #1c1c1c;
+}
+
+fieldset{
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 15px;
+	margin: 0 0 30px 0;
+}
+fieldset h5{
+	font-size: 1.1rem;	
+}
+
+legend {
+	font-size: 1.2rem;
+	padding: 0 10px 5px 10px;
+}
+
+input[type=text], input[type=email], input[type=password], select, textarea{
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-size: 18px;
+	margin: 3px 0 16px 0;
+	border: none;
+	background: #333333;
+	color: #FFF;
+}
+
+input[type=submit], input[type=reset]{
+	border: 1px solid #ac3c00;
+	color: #FFF;
+	border-radius: 30px;
+	padding: 10px 20px;
+	background: #ac3c00;
+	font-size: 1.1rem;
+	margin: 16px 16px 16px 0;
+	cursor: pointer; 
+}
+input[type=submit]:hover, input[type=reset]:hover{
+	background: #ff5900;
+}
+input[type=submit]:active, input[type=reset]:active{
+	background: #6a2501;
+}
+
+
