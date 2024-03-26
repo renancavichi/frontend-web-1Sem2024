@@ -194,11 +194,28 @@ input[type=submit], input[type=reset]{
 	margin: 16px 16px 16px 0;
 	cursor: pointer; 
 }
+
 input[type=submit]:hover, input[type=reset]:hover{
 	background: #ff5900;
 }
+
 input[type=submit]:active, input[type=reset]:active{
 	background: #6a2501;
 }
 
+#banner {
+	width: 500px;
+	height: 300px;
+	background-color: #333333;
+	background-image: url('../img/bg-stock-market.jpg');
+	background-size: 200px 200px;
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background: #333333 url('../img/bg-stock-market.jpg');
+	background-size: cover;
+}
+
+#banner h2{
+	margin: 40px 0 0 40px;
+}
 
