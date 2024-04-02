@@ -28,3 +28,15 @@ git commit -m "Mensagem do commit"
 # Publicar todos commits (Mandar para o repositório na web)
 git push
 ```
+
+# Revisão
+
+ - DOCTYPE
+ - Estrutura Básica
+ - Tags Semânticas
+ - Tags de Texto (h1...h6, p, span, b, strong, i) 
+ - Tabelas (table, tr, th, td) [colspan, rowspan]
+ - Formulários (form, fieldset, legend, label, input, select, textarea) [type: text, password, email, number, radio, checkbox, submit, reset]
+ - Tipos de CSS (Externo, Interno e Inline (em linha))
+ - Flexbox (Display: flex)
+ - Seletores CSS
