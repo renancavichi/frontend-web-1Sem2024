@@ -219,3 +219,50 @@ input[type=submit]:active, input[type=reset]:active{
 	margin: 40px 0 0 40px;
 }
 
+nav div{
+	display: none;
+}
+
+/*
+@media screen and (max-width: 674px) {
+	nav ul {
+		display: none;
+	}
+	nav div {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	body > main {
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 334px) {
+	.card-ticker {
+		width: 100%;
+	}
+}
+*/
+
+@media (width <= 674px) {
+	nav ul {
+		display: none;
+	}
+	nav div {
+		display: block;
+	}
+}
+
+@media (width <= 568px) {
+	body > main {
+		justify-content: center;
+	}
+}
+
+@media (width <= 334px) {
+	.card-ticker {
+		width: 100%;
+	}
+}
