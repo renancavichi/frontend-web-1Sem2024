@@ -9,7 +9,7 @@
 	<script src="js/main.js"></script>
 </head>
 
-<body>
+<body onload="loadCards()">
 	<header>
 		<div class="logotipo">
 			<img src="./img/logo-if-finance.svg" alt="Logo IF Finance">
@@ -17,7 +17,7 @@
 		</div>
 		<nav>
 			<ul>
-				<li><button onclick="addCard()">Add Card</button></li>
+				<li><button onclick="addCard(allStocks[0])">Add Card</button></li>
 				<li><a href="./index.html" class="active">Home</a></li>
 				<li><a href="./destaques.html">Destaques</a></li>
 				<li><a href="./quem-somos.html">Quem Somos</a></li>
@@ -29,111 +29,6 @@
 		</nav>
 	</header>
 	<main>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
-		<div class="card-ticker">
-			<header>
-				<h2><span>NASDAQ:</span> AAPL</h2>
-				<h1>Apple Inc</h1>
-			</header>
-			<main>
-				<p>R$ 250,80</p>
-				<span>▲ 0,35%</span>
-				<span>R$ 0,60</span>
-			</main>
-			<footer>
-				<div>
-					<p>40</p>
-					<span>Ações</span>
-				</div>
-				<div>
-					<p>R$ 34853,45</p>
-					<span>Posição</span>
-				</div>
-			</footer>
-		</div>
 	</main>
 	<footer>
 		<p>Copyright 2024 © Renan Cavichi</p>
