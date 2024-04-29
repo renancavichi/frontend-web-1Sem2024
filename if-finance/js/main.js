@@ -24,9 +24,24 @@ const allStocks = [
 		valor: 43262,
 		variacao: 2.3,
 		nAcoes: 5
+	},
+	{
+		bolsa: "NASDAQ",
+		codigo: "GOOGL",
+		empresa: "Alphabet Class A",
+		valor: 16615,
+		variacao: -0.78,
+		nAcoes: 8
+	},
+	{
+		bolsa: "NASDAQ",
+		codigo: "NVDA",
+		empresa: "NVIDIA Corp",
+		valor: 87757,
+		variacao: 0.02,
+		nAcoes: 13
 	}
 ]
-
 
 function addCard(stock){
     const main = document.querySelector('body > main')
@@ -38,7 +53,7 @@ function addCard(stock){
 			</header>
 			<main>
 				<p>R$ ${realFormat(+stock.valor / 100)}</p>
-				<span ${ stock.variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ stock.variacao < 0 ? '▼' : '▲'} ${allStocks[1].variacao}%</span>
+				<span ${ stock.variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ stock.variacao < 0 ? '▼' : '▲'} ${stock.variacao}%</span>
 				<span>R$ ${realFormat(((+stock.valor / 100)*(stock.variacao / 100)))}</span>
 			</main>
 			<footer>
