@@ -43,27 +43,29 @@ const allStocks = [
 	}
 ]
 
-function addCard(stock){
+function addCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
+	//const {bolsa, codigo, empresa, valor, variacao, nAcoes} = stock
+
     const main = document.querySelector('body > main')
     
 	main.innerHTML += `
         <div class="card-ticker">
 			<header>
-				<h2><span>${stock.bolsa}:</span> ${stock.codigo}</h2>
-				<h1>${stock.empresa}</h1>
+				<h2><span>${bolsa}:</span> ${codigo}</h2>
+				<h1>${empresa}</h1>
 			</header>
 			<main>
-				<p>${realFormat(+stock.valor / 100)}</p>
-				<span ${ stock.variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ stock.variacao < 0 ? '▼' : '▲'} ${stock.variacao}%</span>
-				<span>${realFormat(((+stock.valor / 100)*(stock.variacao / 100)))}</span>
+				<p>${realFormat(+valor / 100)}</p>
+				<span ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao}%</span>
+				<span>${realFormat(((+valor / 100)*(variacao / 100)))}</span>
 			</main>
 			<footer>
 				<div>
-					<p>${stock.nAcoes}</p>
+					<p>${nAcoes}</p>
 					<span>Ações</span>
 				</div>
 				<div>
-					<p>${realFormat(stock.nAcoes * (+stock.valor / 100))}</p>
+					<p>${realFormat(nAcoes * (+valor / 100))}</p>
 					<span>Posição</span>
 				</div>
 			</footer>
@@ -98,3 +100,14 @@ function loadTable(){
 	table.innerHTML = rows
 }
 
+const openModal = () => {
+	const modal = document.getElementById('add-card-modal')
+	modal.style.display = 'flex'
+}
+
+const closeModal = (event) => {
+	const modal = document.getElementById('add-card-modal')
+	if(event.target.id === 'add-card-modal' ){
+		modal.style.display = 'none'
+	}
+}

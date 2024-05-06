@@ -17,11 +17,11 @@
 		</div>
 		<nav>
 			<ul>
-				<li><button onclick="addCard(allStocks[0])">Add Card</button></li>
 				<li><a href="./index.html" class="active">Home</a></li>
 				<li><a href="./destaques.html">Destaques</a></li>
 				<li><a href="./quem-somos.html">Quem Somos</a></li>
 				<li><a href="./contato.html">Contato</a></li>
+				<li><button onclick="openModal()">Add Card</button></li>
 			</ul>
 			<div>
 				<img src="./img/menu-icon.svg" alt="Menu">
@@ -33,6 +33,11 @@
 	<footer>
 		<p>Copyright 2024 © Renan Cavichi</p>
 	</footer>
+	<div id="add-card-modal" onclick="closeModal(event)">
+		<main>
+			<h2>Add Card Ticker</h2>
+		</main>
+	</div>
 	<script>
 		console.log("Olá Footer!")
 		var var1 = 30

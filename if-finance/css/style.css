@@ -53,6 +53,7 @@ nav ul{
 	gap: 16px;
 	margin: 0;
 	padding: 0;
+	align-items: center;
 }
 
 body > main{
@@ -221,6 +222,40 @@ input[type=submit]:active, input[type=reset]:active{
 
 nav div{
 	display: none;
+}
+
+button {
+	background: #ff5900;
+	color: #FFF;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+#add-card-modal {
+	position: absolute;
+	background: #000000b3;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+#add-card-modal main{
+	width: 500px;
+	height: 600px;
+	background: #FFF;
+	border-radius: 15px;
+	padding: 20px;
+	color: #000;
+}
+
+#add-card-modal main h2{
+	margin: 0;
 }
 
 /*
