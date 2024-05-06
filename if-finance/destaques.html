@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>IFFinance</title>
 	<link rel="stylesheet" href="./css/style.css">
+	<script src="js/main.js"></script>
 	<style>
 		body > main{
 			flex-direction: column;	
@@ -13,7 +14,7 @@
 	</style>
 </head>
 
-<body>
+<body onload="loadTable()">
 	<header>
 		<div class="logotipo">
 			<img src="./img/logo-if-finance.svg" alt="Logo IF Finance">
@@ -99,6 +100,23 @@
 				<td>vale.com</td>
 			</tr>
 		</table>
+		<br>
+		<br>
+		<table id="table-acoes">
+			<tr>
+				<th colspan="7" style="text-align: center;">Ações</th>
+			</tr>
+			<tr>
+				<th>Bolsa</th>
+				<th>Código</th>
+				<th>Empresa</th>
+				<th>Valor</th>
+				<th>Variação</th>
+				<th>N Ações</th>
+				<th>Posição</th>
+			</tr>
+			
+		<table>
 	</main>
 	<footer>
 		<p>Copyright 2024 © Renan Cavichi</p>

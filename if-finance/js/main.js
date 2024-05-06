@@ -45,16 +45,17 @@ const allStocks = [
 
 function addCard(stock){
     const main = document.querySelector('body > main')
-    main.innerHTML = main.innerHTML + `
+    
+	main.innerHTML += `
         <div class="card-ticker">
 			<header>
 				<h2><span>${stock.bolsa}:</span> ${stock.codigo}</h2>
 				<h1>${stock.empresa}</h1>
 			</header>
 			<main>
-				<p>R$ ${realFormat(+stock.valor / 100)}</p>
+				<p>${realFormat(+stock.valor / 100)}</p>
 				<span ${ stock.variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ stock.variacao < 0 ? '▼' : '▲'} ${stock.variacao}%</span>
-				<span>R$ ${realFormat(((+stock.valor / 100)*(stock.variacao / 100)))}</span>
+				<span>${realFormat(((+stock.valor / 100)*(stock.variacao / 100)))}</span>
 			</main>
 			<footer>
 				<div>
@@ -62,7 +63,7 @@ function addCard(stock){
 					<span>Ações</span>
 				</div>
 				<div>
-					<p>R$ ${realFormat(stock.nAcoes * (+stock.valor / 100))}</p>
+					<p>${realFormat(stock.nAcoes * (+stock.valor / 100))}</p>
 					<span>Posição</span>
 				</div>
 			</footer>
@@ -71,10 +72,29 @@ function addCard(stock){
 }
 
 function realFormat(valor){
-	return valor.toFixed(2).toString().replace('.',',')
+	//return 'R$ ' + valor.toFixed(2).toString().replace('.',',')
+	return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(valor)
 }
 
 function loadCards(){
 	allStocks.map(stock => addCard(stock))
+}
+
+function loadTable(){
+	const table = document.querySelector('#table-acoes')
+	let rows = table.innerHTML
+	allStocks.map(stock => {
+		rows += 
+			`<tr>
+				<td>${stock.bolsa}</td>
+				<td>${stock.codigo}</td>
+				<td>${stock.empresa}</td>
+				<td>${realFormat(stock.valor / 100)}</td>
+				<td>${stock.variacao} %</td>
+				<td>${stock.nAcoes}</td>
+				<td>${realFormat((stock.valor / 100) * stock.nAcoes)}</td>
+			</tr>`
+	})
+	table.innerHTML = rows
 }
 
