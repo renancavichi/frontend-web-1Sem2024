@@ -235,7 +235,7 @@ button {
 
 #add-card-modal {
 	position: absolute;
-	background: #000000b3;
+	background: #000000e1;
 	top: 0;
 	right: 0;
 	left: 0;
@@ -246,16 +246,25 @@ button {
 }
 
 #add-card-modal main{
-	width: 500px;
-	height: 600px;
-	background: #FFF;
+	width: 300px;
+	background: #141414;
 	border-radius: 15px;
 	padding: 20px;
-	color: #000;
+	color: #ffffff;
 }
 
 #add-card-modal main h2{
 	margin: 0;
+}
+
+#add-card-modal main form{
+	margin: 20px 0 0 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#add-card-modal main form button{
+	margin: 20px 0 0 0;
 }
 
 /*

@@ -105,9 +105,27 @@ const openModal = () => {
 	modal.style.display = 'flex'
 }
 
-const closeModal = (event) => {
+const closeModal = (event, id) => {
 	const modal = document.getElementById('add-card-modal')
-	if(event.target.id === 'add-card-modal' ){
+	if(event?.target?.id === 'add-card-modal' || id === 'add-card-modal' ){
 		modal.style.display = 'none'
 	}
+}
+
+const createCard = (event) =>{
+	event.preventDefault()
+
+	const {bolsa, codigo, empresa, valor, variacao, nAcoes} = event.target.elements
+
+	addCard({
+		bolsa: bolsa.value,
+		codigo: codigo.value,
+		empresa: empresa.value,
+		valor: valor.value,
+		variacao: variacao.value,
+		nAcoes: nAcoes.value
+	})
+
+	event.target.reset()
+	closeModal(null, 'add-card-modal')
 }
