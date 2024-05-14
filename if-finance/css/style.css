@@ -233,7 +233,7 @@ button {
 	cursor: pointer;
 }
 
-#add-card-modal {
+.modal {
 	position: absolute;
 	background: #000000e1;
 	top: 0;
@@ -245,7 +245,7 @@ button {
 	align-items: center;
 }
 
-#add-card-modal main{
+.modal main{
 	width: 300px;
 	background: #141414;
 	border-radius: 15px;
@@ -253,17 +253,17 @@ button {
 	color: #ffffff;
 }
 
-#add-card-modal main h2{
+.modal main h2{
 	margin: 0;
 }
 
-#add-card-modal main form{
+.modal main form{
 	margin: 20px 0 0 0;
 	display: flex;
 	flex-direction: column;
 }
 
-#add-card-modal main form button{
+.modal main form button{
 	margin: 20px 0 0 0;
 }
 

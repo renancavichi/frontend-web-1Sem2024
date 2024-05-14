@@ -21,7 +21,8 @@
 				<li><a href="./destaques.html">Destaques</a></li>
 				<li><a href="./quem-somos.html">Quem Somos</a></li>
 				<li><a href="./contato.html">Contato</a></li>
-				<li><button onclick="openModal()">Add Card</button></li>
+				<li><button onclick="openModal('add-form-modal')">Add Card</button></li>
+				<li><button onclick="openModal('add-api-modal')">Add API</button></li>
 			</ul>
 			<div>
 				<img src="./img/menu-icon.svg" alt="Menu">
@@ -33,7 +34,7 @@
 	<footer>
 		<p>Copyright 2024 © Renan Cavichi</p>
 	</footer>
-	<div id="add-card-modal" onclick="closeModal(event)">
+	<div id="add-form-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Add Card Ticker</h2>
 			<form onsubmit="createCard(event)">
@@ -47,6 +48,18 @@
 				<input type="text" name="valor" id="valor">
 				<label for="variacao">Variação:</label>
 				<input type="text" name="variacao" id="variacao">
+				<label for="nAcoes">Número de Ações:</label>
+				<input type="text" name="nAcoes" id="nAcoes">
+				<button>Add Card</button>
+			</form>
+		</main>
+	</div>
+	<div id="add-api-modal" class="modal" onclick="closeModal(event)">
+		<main>
+			<h2>Add API Ticker</h2>
+			<form onsubmit="createApiCard(event)">
+				<label for="codigo">Código:</label>
+				<input type="text" name="codigo" id="codigo">
 				<label for="nAcoes">Número de Ações:</label>
 				<input type="text" name="nAcoes" id="nAcoes">
 				<button>Add Card</button>
