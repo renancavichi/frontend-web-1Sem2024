@@ -1,7 +1,7 @@
 console.log("Arquivo js externo!") // loga uma mensagem no console
 
 // adicione seu token
-const token = 
+const token = '___aqui___'
 
 const allStocks = [
 	{ 
@@ -52,7 +52,7 @@ function addCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
     const main = document.querySelector('body > main')
     
 	main.innerHTML += `
-        <div class="card-ticker">
+        <div class="card-ticker" id="${codigo}" onmouseenter="cardEnter(event)" onmouseleave="cardLeave(event)">
 			<header>
 				<h2><span>${bolsa}:</span> ${codigo}</h2>
 				<h1>${empresa}</h1>
@@ -72,7 +72,43 @@ function addCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 					<span>Posição</span>
 				</div>
 			</footer>
+			<div class="card-menu">
+				<span>Editar</span>
+				<span onclick="removeCard(event)">Excluir</span>
+			</div>
 		</div>
+    `
+}
+
+function updateCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
+	//const {bolsa, codigo, empresa, valor, variacao, nAcoes} = stock
+
+    const card = document.querySelector(`#${codigo}`)
+    
+	card.innerHTML = `
+			<header>
+				<h2><span>${bolsa}:</span> ${codigo}</h2>
+				<h1>${empresa}</h1>
+			</header>
+			<main>
+				<p>${realFormat(+valor / 100)}</p>
+				<span ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao}%</span>
+				<span>${realFormat(((+valor / 100)*(variacao / 100)))}</span>
+			</main>
+			<footer>
+				<div>
+					<p>${nAcoes}</p>
+					<span>Ações</span>
+				</div>
+				<div>
+					<p>${realFormat(nAcoes * (+valor / 100))}</p>
+					<span>Posição</span>
+				</div>
+			</footer>
+			<div class="card-menu">
+				<span>Editar</span>
+				<span onclick="removeCard(event)">Excluir</span>
+			</div>
     `
 }
 
@@ -159,22 +195,65 @@ const createApiCard = async (event) =>{
 	event.preventDefault()
 	const {codigo, nAcoes} = event.target.elements
 
-	const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${codigo.value}&token=${token}`)
-	const result = await response.json()
+	try {
+		const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${codigo.value}&token=${token}`)
+		const result = await response.json()
+		console.log("Result:", result)
 
-	const response2 = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${codigo.value}&token=${token}`)
-	const profile = await response2.json()
+		const response2 = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${codigo.value}&token=${token}`)
+		const profile = await response2.json()
+		console.log("Profile:", profile)
 
-	const stock = {
-		bolsa: profile.exchange.split(' ')[0],
-		codigo: codigo.value,
-		empresa: profile.name,
-		valor: result.c * 100,
-		variacao: result.d,
-		nAcoes: nAcoes.value
+		if(!response.ok || !response2.ok){
+			alert('Erro ao consultar ação!')
+			return
+		}
+
+		if(profile?.exchange === undefined || result?.d === null){
+			alert('Ação não encontrada!')
+			return
+		}
+
+		const stock = {
+			bolsa: profile.exchange.split(' ')[0],
+			codigo: codigo.value,
+			empresa: profile?.name || '',
+			valor: result.c * 100,
+			variacao: result.d,
+			nAcoes: nAcoes.value
+		}
+		
+		const card = document.getElementById(codigo.value)
+
+		if(card){
+			updateCard(stock)
+		} else {
+			addCard(stock)
+		}
+	} catch (error){
+		alert('Erro ao consultar ação!')
+		console.log('ERROR:', error)
 	}
-
-	addCard(stock)
+	
 	event.target.reset()
 	closeModal(null, 'add-api-modal')
+}
+
+const cardEnter = (event) => {
+	const cardMenu = event.target.querySelector('.card-menu')
+	cardMenu.style.display = 'flex'
+	console.log(event.target)
+	console.log('cardEnter....')
+}
+
+const cardLeave = (event) => {
+	const cardMenu = event.target.querySelector('.card-menu')
+	cardMenu.style.display = 'none'
+	console.log('cardLeave....')
+}
+
+const removeCard = (event) => {
+	// parentElement sobe um nível na hierarquia de elementos enquanto closest busca um seletor nos ancestrais
+	// event.target.parentElement
+	event.target.closest('.card-ticker').remove()
 }

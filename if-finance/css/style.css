@@ -74,11 +74,32 @@ body > footer{
 
 .card-ticker{
 	width: 230px;
+	position: relative;
 	/* height: fit-content; */
 	background: #0a0a0a;
 	border-radius: 20px;
 	padding: 16px;
 	align-self: baseline;
+}
+
+.card-menu{
+	display: none;
+	position: absolute;
+	background: #000000bd;
+	backdrop-filter: blur(10px);
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 20px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px
+}
+
+.card-menu span{
+	cursor: pointer;
+	padding: 20px;
 }
 
 .card-ticker header{
