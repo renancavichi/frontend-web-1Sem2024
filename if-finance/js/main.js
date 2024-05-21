@@ -58,9 +58,9 @@ function addCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 				<h1>${empresa}</h1>
 			</header>
 			<main>
-				<p>${realFormat(+valor / 100)}</p>
-				<span ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao}%</span>
-				<span>${realFormat(((+valor / 100)*(variacao / 100)))}</span>
+				<p data-valor="${valor}">${dolarFormat(+valor / 100)}</p>
+				<span data-variacao="${variacao}" ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao.toFixed(2)}%</span>
+				<span>${dolarFormat(((+valor / 100)*(variacao / 100)))}</span>
 			</main>
 			<footer>
 				<div>
@@ -68,7 +68,7 @@ function addCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 					<span>Ações</span>
 				</div>
 				<div>
-					<p>${realFormat(nAcoes * (+valor / 100))}</p>
+					<p>${dolarFormat(nAcoes * (+valor / 100))}</p>
 					<span>Posição</span>
 				</div>
 			</footer>
@@ -78,6 +78,10 @@ function addCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 			</div>
 		</div>
     `
+	const allEdit = main.querySelectorAll('.card-ticker .card-menu span:first-child')
+	allEdit.forEach(edit => {
+		edit.addEventListener('click', openEditModal)
+	})
 }
 
 function updateCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
@@ -91,9 +95,9 @@ function updateCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 				<h1>${empresa}</h1>
 			</header>
 			<main>
-				<p>${realFormat(+valor / 100)}</p>
-				<span ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao}%</span>
-				<span>${realFormat(((+valor / 100)*(variacao / 100)))}</span>
+				<p data-valor="${valor}" >${dolarFormat(+valor / 100)}</p>
+				<span data-variacao="${variacao}" ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao.toFixed(2)}%</span>
+				<span>${dolarFormat(((+valor / 100)*(variacao / 100)))}</span>
 			</main>
 			<footer>
 				<div>
@@ -101,7 +105,7 @@ function updateCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 					<span>Ações</span>
 				</div>
 				<div>
-					<p>${realFormat(nAcoes * (+valor / 100))}</p>
+					<p>${dolarFormat(nAcoes * (+valor / 100))}</p>
 					<span>Posição</span>
 				</div>
 			</footer>
@@ -110,11 +114,14 @@ function updateCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 				<span onclick="removeCard(event)">Excluir</span>
 			</div>
     `
+
+	const edit = card.querySelector('.card-ticker .card-menu span:first-child')
+	edit.addEventListener('click', openEditModal)
 }
 
-function realFormat(valor){
+function dolarFormat(valor){
 	//return 'R$ ' + valor.toFixed(2).toString().replace('.',',')
-	return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(valor)
+	return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(valor)
 }
 
 function loadCards(){
@@ -219,7 +226,7 @@ const createApiCard = async (event) =>{
 			codigo: codigo.value,
 			empresa: profile?.name || '',
 			valor: result.c * 100,
-			variacao: result.d,
+			variacao: result.dp,
 			nAcoes: nAcoes.value
 		}
 		
@@ -242,18 +249,42 @@ const createApiCard = async (event) =>{
 const cardEnter = (event) => {
 	const cardMenu = event.target.querySelector('.card-menu')
 	cardMenu.style.display = 'flex'
-	console.log(event.target)
-	console.log('cardEnter....')
 }
 
 const cardLeave = (event) => {
 	const cardMenu = event.target.querySelector('.card-menu')
 	cardMenu.style.display = 'none'
-	console.log('cardLeave....')
 }
 
 const removeCard = (event) => {
 	// parentElement sobe um nível na hierarquia de elementos enquanto closest busca um seletor nos ancestrais
 	// event.target.parentElement
 	event.target.closest('.card-ticker').remove()
+}
+
+const openEditModal = (event) => {
+	const card = event.target.closest('.card-ticker')
+	console.log(card);
+
+	const inputBolsa = document.getElementById('e-bolsa')
+	inputBolsa.value = card.querySelector('header h2 span').innerText.replace(':', '')
+
+	const inputCodigo = document.getElementById('e-codigo')
+	inputCodigo.value = card.querySelector('header h2').innerText.split(': ')[1]
+
+	const inputEmpresa = document.getElementById('e-empresa')
+	inputEmpresa.value = card.querySelector('header h1').innerText
+
+	const inputValor = document.getElementById('e-valor')
+	inputValor.value = card.querySelector('main p').dataset.valor
+
+	const inputVariacao = document.getElementById('e-variacao')
+	inputVariacao.value = card.querySelector('main > span').dataset.variacao
+
+	const inputNAcoes = document.getElementById('e-nAcoes')
+	inputNAcoes.value = card.querySelector('footer div p').innerText
+
+			
+	
+	openModal('edit-form-modal')
 }

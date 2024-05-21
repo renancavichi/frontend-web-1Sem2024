@@ -54,6 +54,26 @@
 			</form>
 		</main>
 	</div>
+	<div id="edit-form-modal" class="modal" onclick="closeModal(event)">
+		<main>
+			<h2>Edit Card Ticker</h2>
+			<form onsubmit="editCard(event)">
+				<label for="bolsa">Bolsa:</label>
+				<input type="text" name="bolsa" id="e-bolsa">
+				<label for="codigo">Código:</label>
+				<input type="text" name="codigo" id="e-codigo">
+				<label for="empresa">Empresa:</label>
+				<input type="text" name="empresa" id="e-empresa">
+				<label for="valor">Valor:</label>
+				<input type="text" name="valor" id="e-valor">
+				<label for="variacao">Variação:</label>
+				<input type="text" name="variacao" id="e-variacao">
+				<label for="nAcoes">Número de Ações:</label>
+				<input type="text" name="nAcoes" id="e-nAcoes">
+				<button>Edit Card</button>
+			</form>
+		</main>
+	</div>
 	<div id="add-api-modal" class="modal" onclick="closeModal(event)">
 		<main>
 			<h2>Add API Ticker</h2>
