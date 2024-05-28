@@ -1,5 +1,3 @@
-console.log("Arquivo js externo!") // loga uma mensagem no console
-
 // adicione seu token
 const token = '___aqui___'
 
@@ -96,7 +94,7 @@ function updateCard({bolsa, codigo, empresa, valor, variacao, nAcoes}){
 			</header>
 			<main>
 				<p data-valor="${valor}" >${dolarFormat(+valor / 100)}</p>
-				<span data-variacao="${variacao}" ${ variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ variacao < 0 ? '▼' : '▲'} ${variacao.toFixed(2)}%</span>
+				<span data-variacao="${variacao}" ${ +variacao < 0 ? 'style="background: #FF0000;"' : ''} >${ +variacao < 0 ? '▼' : '▲'} ${+variacao.toFixed(2)}%</span>
 				<span>${dolarFormat(((+valor / 100)*(variacao / 100)))}</span>
 			</main>
 			<footer>
@@ -180,22 +178,10 @@ const createCard = (event) =>{
 
 	const formData = new FormData(event.target)
 	const stock = Object.fromEntries(formData)
-	console.log(stock)
 
 	addCard(stock)
 	event.target.reset()
 	closeModal(null, 'add-form-modal')
-}
-
-// async function testeApi(){
-// }
-const testeApi = async () => {
-	const response = await fetch('https://finnhub.io/api/v1/quote?symbol=AAPL&token=cp1aj71r01qu1k1i369gcp1aj71r01qu1k1i36a0')
-	//const response = await fetch('https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=cp1aj71r01qu1k1i369gcp1aj71r01qu1k1i36a0')
-	
-	console.log(response)
-	const result = await response.json()
-	console.log(result.objectName)
 }
 
 const createApiCard = async (event) =>{
@@ -205,11 +191,9 @@ const createApiCard = async (event) =>{
 	try {
 		const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${codigo.value}&token=${token}`)
 		const result = await response.json()
-		console.log("Result:", result)
 
 		const response2 = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${codigo.value}&token=${token}`)
 		const profile = await response2.json()
-		console.log("Profile:", profile)
 
 		if(!response.ok || !response2.ok){
 			alert('Erro ao consultar ação!')
@@ -264,13 +248,14 @@ const removeCard = (event) => {
 
 const openEditModal = (event) => {
 	const card = event.target.closest('.card-ticker')
-	console.log(card);
 
 	const inputBolsa = document.getElementById('e-bolsa')
 	inputBolsa.value = card.querySelector('header h2 span').innerText.replace(':', '')
 
 	const inputCodigo = document.getElementById('e-codigo')
+	const inputAntigoCodigo = document.getElementById('e-antigo-codigo')
 	inputCodigo.value = card.querySelector('header h2').innerText.split(': ')[1]
+	inputAntigoCodigo.value = card.querySelector('header h2').innerText.split(': ')[1]
 
 	const inputEmpresa = document.getElementById('e-empresa')
 	inputEmpresa.value = card.querySelector('header h1').innerText
@@ -284,7 +269,22 @@ const openEditModal = (event) => {
 	const inputNAcoes = document.getElementById('e-nAcoes')
 	inputNAcoes.value = card.querySelector('footer div p').innerText
 
-			
-	
 	openModal('edit-form-modal')
+}
+
+const editCard = (event) =>{
+	event.preventDefault()
+	const formData = new FormData(event.target)
+	const stock = Object.fromEntries(formData)
+
+	const card = document.getElementById(stock['antigo-codigo'])
+	card.setAttribute('id', stock.codigo)
+
+	updateCard({
+		...stock,
+		valor: +stock.valor,
+		variacao: +stock.variacao,
+		nAcoes: +stock.nAcoes
+	})
+	closeModal(null, 'edit-form-modal')
 }
